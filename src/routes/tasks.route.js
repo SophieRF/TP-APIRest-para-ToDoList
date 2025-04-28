@@ -8,59 +8,23 @@ res.json(res.tasks);
 });
 
 // GET BY ID
-router.get('/tasks/:id', async (req, res) => {
-    try {
-        const task = await Task.findById(req.params.id);
-        if (!task) {
-            return res.status(404).json({ error: 'Tarea no encontrada' });
-        }
-        res.json(task);
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener las tareas' });
-    }
+router.get('/tasks/:id', getTaskById, async (req, res) => {
+res.json(res.task);
 });
 
 // POST
-router.post('/tasks', async (req, res) => {
-    try {
-        const newTask = new Task(req.body);
-        const savedTask = await newTask.save();
-        res.status(201).json(savedTask);
-    } catch (error) {
-        res.status(400).json({ error: 'Error al crear la tarea' });
-    }
+router.post('/tasks', postTask, async (req, res) => {
+res.json(res.task);
 });
 
 // PUT
-router.put('/tasks/:id', async (req, res) => {
-    try {
-        const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!updatedTask) {
-            return res.status(404).json({ error: 'Tarea no encontrada' });
-        }
-        res.json(updatedTask);
-    } catch (error) {
-        res.status(400).json({ error: 'Error al actualizar la tarea' });
-    }
+router.put('/tasks/:id', putTask, async (req, res) => {
+res.json(res.updatedTask);
 });
 
 // DELETE
-router.delete('/tasks/:id', async (req, res) => {
-    try {
-        const task = await Task.findById(req.params.id);
-        if (!task) {
-            return res.status(404).json({ error: 'Tarea no encontrada' });
-        }
-
-        if (task.sprintId) {
-            return res.status(400).json({ error: 'No se puede eliminar la tarea porque está asignada a un sprint' });
-        }
-
-        const deletedTask = await Task.findByIdAndDelete(req.params.id);
-        res.json({ message: 'Tarea eliminada con éxito' });
-    } catch (error) {
-        res.status(500).json({ error: 'Error al eliminar la tarea' });
-    }
+router.delete('/tasks/:id', deleteTask, async (req, res) => {
+res.json(res.taskToDelete)
 })
 
 module.exports = router;
