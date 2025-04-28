@@ -1,4 +1,4 @@
-const Sprint = require('../models/Sprint.model')
+const Sprint = require('../models/Sprint.model');
 
 export const getSprint = async (req, res, next) => {
     let sprints;

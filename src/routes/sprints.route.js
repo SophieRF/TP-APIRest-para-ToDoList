@@ -6,7 +6,7 @@ const { getSprint, getSprintById, createSprint, updateSprint } = require('../con
 
 // GET
 router.get('/sprints', getSprint, async (req, res) => {
-    res.json(res.sprint);
+res.json(res.sprints);
 });
 
 // GET BY ID
