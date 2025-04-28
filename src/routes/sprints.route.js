@@ -2,34 +2,26 @@ const express = require('express');
 const router = express.Router();
 const Sprint = require('../models/Sprint.js');
 const Task = require('../models/Task.js');
-const { getSprint, getSprintById, createSprint } = require('../controllers/sprint.controller.js');
+const { getSprint, getSprintById, createSprint, updateSprint } = require('../controllers/sprint.controller.js');
 
 // GET
-router.get('/sprints', getSprint(), async (req, res) => {
+router.get('/sprints', getSprint, async (req, res) => {
     res.json(res.sprint);
 });
 
 // GET BY ID
-router.get('/sprints/:id', getSprintById(),  async (req, res) => {
+router.get('/sprints/:id', getSprintById,  async (req, res) => {
     res.json(res.sprint);
 });
 
 // POST
-router.post('/sprints', createSprint(),  async (req, res) => {
-    res.json(res.sprint)
+router.post('/sprints', createSprint,  async (req, res) => {
+    res.json(res.savedSprint)
 });
 
 // PUT
-router.put('/sprints/:id', async (req, res) => {
-    try {
-        const updatedSprint = await Sprint.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!updatedSprint) {
-            return res.status(404).json({ error: 'Sprint no encontrada' });
-        }
-        res.json(updatedSprint);
-    } catch (error) {
-        res.status(400).json({ error: 'Error al actualizar la sprint' });
-    }
+router.put('/sprints/:id', updateSprint, async (req, res) => {
+    res.json(res.updatedSprint)
 });
 
 // DELETE

@@ -48,3 +48,22 @@ export const createSprint = async (req, res, next) => {
     res.sprint=savedSprint;
     next()
 }
+
+export const updateSprint = async (req, res, next) => {
+    let updatedSprint;
+    const {id} = req.query;
+    if(!id){
+        return res.status(404).json({message:"No se encontró la Sprint con ese id"})
+    }
+    try{
+        updatedSprint=await Sprint.findByIdAndUpdate(req.params.id, req.body, {new:true});
+        if(!updatedSprint){
+            res.status(404).json({error:'Sprint no enocntrada'})
+        }
+        res.json(updatedSprint);
+    }catch(error){
+        res.status(400).json({error: 'Error al actualizar la sprint'})
+    }
+}
+
+// Delete
