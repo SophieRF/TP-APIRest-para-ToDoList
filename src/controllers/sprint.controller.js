@@ -33,3 +33,18 @@ export const getSprintById= async (req, res, next) => {
     res.sprint=sprint;
     next()
 }
+
+export const createSprint = async (req, res, next) => {
+    let nuevoSprint;
+    let savedSprint;
+    try{
+        nuevoSprint=new Sprint(req.body);
+        savedSprint=await nuevoSprint.save();
+        res.status(201).json(savedSprint);
+    }catch(error){
+        res.statu(400).json({error: 'Error al crear la sprint'})
+    }
+
+    res.sprint=savedSprint;
+    next()
+}
