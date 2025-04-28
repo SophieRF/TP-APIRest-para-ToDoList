@@ -4,13 +4,8 @@ const Sprint = require('../models/Sprint.js');
 const Task = require('../models/Task.js');
 
 // GET
-router.get('/sprints', async (req, res) => {
-    try {
-        const sprints = await Sprint.find();
-        res.json(sprints);
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener los sprints' });
-    }
+router.get('/sprints', getSprint, async (req, res) => {
+res.json(res.sprints);
 });
 
 // GET BY ID
