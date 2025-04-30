@@ -1,6 +1,6 @@
 const Task = require('../models/Task.model.js');
 
-export const getTask = async (req, res, next) => {
+const getTask = async (req, res, next) => {
     let tasks;
     try {
         tasks = await Task.find();
@@ -15,7 +15,7 @@ export const getTask = async (req, res, next) => {
     next();
 }
 
-export const getTaskById = async (req, res, next) => {
+const getTaskById = async (req, res, next) => {
     let task;
     const { id } = req.query;
     if (!id) {
@@ -34,7 +34,7 @@ export const getTaskById = async (req, res, next) => {
     next();
 }
 
-export const postTask = async (req, res, next) => {
+const postTask = async (req, res, next) => {
     let task;
     try {
         const newTask = new Task(req.body);
@@ -48,7 +48,7 @@ export const postTask = async (req, res, next) => {
     next();
 }
 
-export const putTask = async (req, res, next) => {
+const putTask = async (req, res, next) => {
     let updatedTask;
     try {
         updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -63,7 +63,7 @@ export const putTask = async (req, res, next) => {
     next();
 }
 
-export const deleteTask = async (req, res, next) => {
+const deleteTask = async (req, res, next) => {
     let taskToDelete;
     try {
         taskToDelete = await Task.findById(req.params.id);
@@ -84,3 +84,5 @@ export const deleteTask = async (req, res, next) => {
     res.taskToDelete = taskToDelete;
     next();
 }
+
+module.exports = {getTask, getTaskById, postTask, putTask, deleteTask}

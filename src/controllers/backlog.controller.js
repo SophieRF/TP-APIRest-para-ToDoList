@@ -1,7 +1,7 @@
-const Backlog = require('../models/Backlog.model');
-const Task = require('../models/Task.js');
+const Backlog = require('../models/Backlog.model.js');
+const Task = require('../models/Task.model.js');
 
-export const getBacklog = async (req, res, next) => {
+const getBacklog = async (req, res, next) => {
     let backlog;
 
     try {
@@ -15,7 +15,7 @@ export const getBacklog = async (req, res, next) => {
     next();
 }
 
-export const postBacklog = async (req, res, next) => {
+const postBacklog = async (req, res, next) => {
     let savedBacklog;
 
     try {
@@ -30,7 +30,7 @@ export const postBacklog = async (req, res, next) => {
     next();
 }
 
-export const putTaskOnBacklog = async (req, res, next) => {
+const putTaskOnBacklog = async (req, res, next) => {
 
     let task;
     let backlog = Backlog.getBacklog();
@@ -55,3 +55,5 @@ export const putTaskOnBacklog = async (req, res, next) => {
     res.backlog = backlog;
     next();
 }
+
+module.exports={getBacklog, postBacklog, putTaskOnBacklog}

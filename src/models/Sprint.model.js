@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const sprintSchema = new mongoose.Schema({
     fechaInicio: {
@@ -16,4 +16,6 @@ const sprintSchema = new mongoose.Schema({
     },
 });
 
-export default mongoose.model("sprint", sprintSchema);
+const Sprint = mongoose.model("sprint", sprintSchema);
+
+module.export = Sprint;

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Sprint = require('../models/Sprint.js');
-const Task = require('../models/Task.js');
-const { getSprint, getSprintById, createSprint, updateSprint } = require('../controllers/sprint.controller.js');
+const Sprint = require('../models/Sprint.model.js');
+const Task = require('../models/Task.model.js');
+const { getSprint, getSprintById, createSprint, updateSprint, deleteSprint } = require('../controllers/sprint.controller.js');
 
 // GET
 router.get('/sprints', getSprint, async (req, res) => {
@@ -25,16 +25,8 @@ router.put('/sprints/:id', updateSprint, async (req, res) => {
 });
 
 // DELETE
-router.delete('/sprints/:id', async (req, res) => {
-    try {
-        const deletedSprint = await Sprint.findByIdAndDelete(req.params.id);
-        if (!deletedSprint) {
-            return res.status(404).json({ error: 'Sprint no encontrada' });
-        }
-        res.json({ message: 'Sprint eliminada con éxito' });
-    } catch (error) {
-        res.status(500).json({ error: 'Error al eliminar la sprint' });
-    }
+router.delete('/sprints/:id', deleteSprint, async (req, res) => {
+    res.json(res.deletedSprint);
 })
 
 //PUT TASK

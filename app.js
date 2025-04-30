@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const routesBacklog = require('./src/routes/backlog.route.js');
+const routesSprints = require('./src/routes/sprints.route.js');
+const routesTasks = require('./src/routes/tasks.route.js');
 require('dotenv').config();
 
 const app = express();

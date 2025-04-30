@@ -1,6 +1,6 @@
 const Sprint = require('../models/Sprint.model');
 
-export const getSprint = async (req, res, next) => {
+const getSprint = async (req, res, next) => {
     let sprints;
     try{
         sprints=await Sprint.find();
@@ -15,7 +15,7 @@ export const getSprint = async (req, res, next) => {
     next();
 }
 
-export const getSprintById= async (req, res, next) => {
+const getSprintById= async (req, res, next) => {
     let sprint;
     const {id} = req.query;
     if(!id){
@@ -34,7 +34,7 @@ export const getSprintById= async (req, res, next) => {
     next()
 }
 
-export const createSprint = async (req, res, next) => {
+const createSprint = async (req, res, next) => {
     let nuevoSprint;
     let savedSprint;
     try{
@@ -49,7 +49,7 @@ export const createSprint = async (req, res, next) => {
     next()
 }
 
-export const updateSprint = async (req, res, next) => {
+const updateSprint = async (req, res, next) => {
     let updatedSprint;
     const {id} = req.query;
     if(!id){
@@ -66,4 +66,25 @@ export const updateSprint = async (req, res, next) => {
     }
 }
 
-// Delete
+// Eliminar una sprint por Id:
+const deleteSprint = async (req, res, next) => {
+    let deletedSprint;
+    const {id} = req.query;
+    if(!id){
+        return res.status(404).json({message: "No se encontró la Sprint con es Id"})
+    }
+
+    try{
+        deletedSprint=await Sprint.findByIdAndDelete(req.params.id);
+        if(!deletedSprint){
+            return res.status(404).json({error:"Sprint no encontrada"});
+        }
+        res.json({message:'Sprint eliminada con éxito'});
+    }catch(error){
+        res.status(500).json({error:'Error al eliminar la Sprint'})
+    }
+}
+
+// PUT Task
+
+module.exports={getSprint, getSprintById, createSprint, updateSprint, deleteSprint}

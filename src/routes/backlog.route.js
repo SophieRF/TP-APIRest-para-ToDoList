@@ -1,5 +1,5 @@
 const express = require('express');
-const { putTaskOnBacklog } = require('../controllers/backlog.controller');
+const { putTaskOnBacklog, getBacklog, postBacklog } = require('../controllers/backlog.controller');
 const router = express.Router();
 
 // GET
@@ -16,3 +16,5 @@ res.json(res.savedBacklog);
 router.put('/backlog/add-task/:taskId',putTaskOnBacklog, async (req, res) => {
 res.json(res.backlog);
 });
+
+module.exports = router;
