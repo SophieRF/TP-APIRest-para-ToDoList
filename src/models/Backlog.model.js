@@ -1,10 +1,12 @@
-const { default: mongoose } = require("mongoose");
+const mongoose = require('mongoose');
 
-const backlogSchema = new mongoose.Schema({
-    tareas: [{type: mongoose.Schema.Types.ObjectId, ref: "Task",
-        default: [] }],
+const BacklogSchema = new mongoose.Schema({
+    tareas: [{
+        type: String,
+        ref: 'Task'
+    }]
+}, {
+    timestamps: true,
 });
 
-const Backlog = mongoose.model("backlog", backlogSchema);
-
-module.export = Backlog;
+module.exports = mongoose.model('Backlog', BacklogSchema);

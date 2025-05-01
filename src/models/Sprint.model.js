@@ -1,25 +1,24 @@
 const mongoose = require('mongoose');
 
-const sprintSchema = new mongoose.Schema({
+const SprintSchema = new mongoose.Schema({
     nombre: {
-        type:String,
-        require: true
+        type: String,
+        required: true
     },
     fechaInicio: {
-        type: String, require: true
+        type: Date,
+        required: true
     },
     fechaCierre: {
-        type: String, require: true
+        type: Date,
+        required: true
     },
     tareas: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Task", default: []
-    }],
-    color: {
-        type: String
-    },
+        type: String,
+        ref: 'Task'
+    }]
+}, {
+    timestamps: true,
 });
 
-const Sprint = mongoose.model("sprint", sprintSchema);
-
-module.export = Sprint;
+module.exports = mongoose.model('Sprint', SprintSchema);

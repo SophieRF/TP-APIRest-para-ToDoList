@@ -1,0 +1,39 @@
+
+{"tareas": [
+      {
+        "id": "1743637839584",
+        "titulo": "Tarea backlog ",
+        "descripcion": "descripciónn",
+        "estado": "Pendiente",
+        "fechaLimite": "2025-04-26"
+      },
+      {
+        "id": "1743637860034",
+        "titulo": "Tarea backlog 2",
+        "descripcion": "descripción 2",
+        "estado": "Pendiente",
+        "fechaLimite": "2025-04-20"
+      },
+      {
+        "id": "1743637880016",
+        "titulo": "Tarea backlog 3",
+        "descripcion": "descrip 3",
+        "estado": "Pendiente",
+        "fechaLimite": "2025-05-15"
+      },
+      {
+        "id": "1745522381440",
+        "titulo": "tarea nueva 2",
+        "descripcion": "una tarea",
+        "estado": "Pendiente",
+        "fechaLimite": "2025-05-08"
+      },
+      {
+        "id": "1745522409385",
+        "titulo": "Tarea nueva 1",
+        "descripcion": "tarea 1",
+        "estado": "Pendiente",
+        "fechaLimite": "2025-05-05"
+      }
+    ]
+}

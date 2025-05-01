@@ -1,0 +1,27 @@
+[
+  {
+    "nombre": "Sprint 1",
+    "fechaInicio": "2025-03-01",
+    "fechaCierre": "2025-03-31",
+    "tareas": [
+      {
+        "titulo": "Tarea1",
+        "descripcion": "2384uwq",
+        "estado": "Terminada",
+        "fechaLimite": "2025-04-01"
+      },
+      {
+        "titulo": "NuevaTarea",
+        "descripcion": "una tarea nueva",
+        "estado": "En progreso",
+        "fechaLimite": "2025-05-20"
+      }
+    ]
+  },
+  {
+    "nombre": "Sprint 2",
+    "fechaInicio": "2025-04-19",
+    "fechaCierre": "2025-05-11",
+    "tareas": []
+  }
+]

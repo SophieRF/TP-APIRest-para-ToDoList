@@ -17,7 +17,7 @@ const getSprint = async (req, res, next) => {
 
 const getSprintById= async (req, res, next) => {
     let sprint;
-    const {id} = req.query;
+    const {id} = req.params.id;
     if(!id){
         return res.status(404).json({message:"El id de la sprint no es válido"})
     }
@@ -42,7 +42,7 @@ const createSprint = async (req, res, next) => {
         savedSprint=await nuevoSprint.save();
         res.status(201).json(savedSprint);
     }catch(error){
-        res.statu(400).json({error: 'Error al crear la sprint'})
+        res.status(400).json({error: 'Error al crear la sprint'})
     }
 
     res.sprint=savedSprint;
@@ -51,7 +51,7 @@ const createSprint = async (req, res, next) => {
 
 const updateSprint = async (req, res, next) => {
     let updatedSprint;
-    const {id} = req.query;
+    const {id} = req.params.id;
     if(!id){
         return res.status(404).json({message:"No se encontró la Sprint con ese id"})
     }

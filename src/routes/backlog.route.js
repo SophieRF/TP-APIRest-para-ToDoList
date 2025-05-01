@@ -3,17 +3,17 @@ const { putTaskOnBacklog, getBacklog, postBacklog } = require('../controllers/ba
 const router = express.Router();
 
 // GET
-router.get('/backlog', getBacklog ,async (req, res) => {
+router.get('/', getBacklog ,async (req, res) => {
 res.json(res.backlog);
 });
 
 // POST
-router.post('/backlog', postBacklog, async (req, res) => {
+router.post('/', postBacklog, async (req, res) => {
 res.json(res.savedBacklog);
 });
 
 //PUT TASK
-router.put('/backlog/add-task/:taskId',putTaskOnBacklog, async (req, res) => {
+router.put('add-task/:taskId',putTaskOnBacklog, async (req, res) => {
 res.json(res.backlog);
 });
 
